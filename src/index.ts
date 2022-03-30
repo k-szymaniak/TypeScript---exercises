@@ -15,7 +15,6 @@ app.get('/note/:text2', function (req: Request, res: Response) {
 })
 app.post('/note', function (req: Request, res: Response) {
   console.log(req.body) // e.x. req.body.title 
-  console.log(res.header)
   res.sendStatus(201).send(date.toISOString())
   
 })
@@ -29,3 +28,5 @@ app.delete('/note/:id', function (req: Request, res: Response) {
 })
 
 app.listen(3000)
+
+.
