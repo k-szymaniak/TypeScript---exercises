@@ -1,31 +1,48 @@
-import express from 'express'
-import {Request, Response} from 'express'
-import { text } from 'stream/consumers'
+import express, { Request, Response, NextFunction } from 'express';
+const app = express()  
 
-const app = express()
 
-const date = new Date()
-let text2 : string
-app.use(express.json())
+interface NoteItem {
+ title: string;
+ content: string;
+ createDate: string;
+ tags: string[];
+ id?: number;
+};
 
-app.get('/note/:text2', function (req: Request, res: Response) {
-   // res.sendStatus(200).send(app)
-   res.send(text2)
-   console.log(text2)
-})
-app.post('/note', function (req: Request, res: Response) {
-  console.log(req.body) // e.x. req.body.title 
-  res.sendStatus(201).send(date.toISOString())
-  
-})
-app.put('/note/:id', function (req: Request, res: Response) {
-    console.log(req.body) // e.x. req.body.title 
-    res.sendStatus(204).send(date.toISOString())
-})
-app.delete('/note/:id', function (req: Request, res: Response) {
-    console.log(req.body) // e.x. req.body.title 
-    res.sendStatus(204).send(date.toISOString())
-})
+  let Note: NoteItem[] = [
+    {
+      title: 'Note',
+      content: 'test',
+      createDate: 'dad',
+      tags: ['','',''],
+      id: 2
+    },
+    {
+      title: 'Note',
+      content: 'test',
+      createDate: 'dad',
+      tags: ['','',''],
+      id: 3
+    }
+  ];
 
-app.listen(3000)
+
+app.post('/note', function (req, res) {  
+  res.status(201).json(Note); 
+})  
+
+app.get('/note/:id', function (req, res) {  
+  res.status(200).json(Note); 
+})  
+
+app.put('/note/:id', function (req, res) {  
+  res.status(204).json(Note); 
+})  
+
+app.delete('/note/:id', function (req, res) {  
+  res.status(204).json(Note); 
+})  
+
+app.listen(3000)  
 
