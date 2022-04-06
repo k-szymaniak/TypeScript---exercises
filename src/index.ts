@@ -29,4 +29,3 @@ app.delete('/note/:id', function (req: Request, res: Response) {
 
 app.listen(3000)
 
-.
