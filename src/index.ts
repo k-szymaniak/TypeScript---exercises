@@ -11,7 +11,7 @@ app.use(express.json())
   } catch (err) {
       console.log(err)
   } 
-}
+//}
 
 //private async updateStorage(): Promise<void> {
  // try {
