@@ -1,5 +1,27 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express from 'express'
+import { Request, Response, NextFunction } from 'express';
+import fs from 'fs';
+
 const app = express()  
+app.use(express.json())
+
+//private async readStorage(): Promise<void> {
+  try {
+      const data = await fs.promises.readFile(storeFile, 'utf-8');
+  } catch (err) {
+      console.log(err)
+  } 
+}
+
+//private async updateStorage(): Promise<void> {
+ // try {
+ //     await fs.promises.writeFile(storeFile, dataToSave);
+ // } catch (err) {
+ //     console.log(err)
+//  }
+//}
+
+
 
 
 interface NoteItem {
@@ -30,6 +52,7 @@ interface NoteItem {
 
 app.post('/note', function (req, res) {  
   res.status(201).json(Note); 
+  console.log(req.body)
 })  
 
 app.get('/note/:id', function (req, res) {  
