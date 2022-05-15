@@ -12,8 +12,8 @@ export class User{
         this.password = user.password
       }
       else{
-        this.login = ''
-        this.password = ''
+        this.login = 'test'
+        this.password = 'test'
       }
     }
 }
